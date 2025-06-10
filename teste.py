@@ -54,17 +54,11 @@ energies = []
 data = []
 for ie in range(100):
     energy = ie * 0.01
-
-    # compute the scattering matrix at a given energy
     smatrix = kwant.smatrix(syst, energy = energy)
-
-    # compute the transmission probability from lead 0 to
-    # lead 1
     energies.append(energy)
     data.append(smatrix.transmission(1, 0))
 
-# Use matplotlib to write output
-# We should see conductance steps
+# plotar o grafico
 kwant.plot(syst, show=False)
 plt.figure(2)
 plt.plot(energies, data)
